@@ -1,12 +1,10 @@
 #include <math.h>
 bool compare_double(double x, double y) {
-    if (x>y){
+    if (fabs(x-y)<0.000001){
         return true;
     }
-    else{
-        return false;
-    }
- // Not implementation
+    return false;
+
 }
 
 int get_nearest_int(double x) {
@@ -16,6 +14,11 @@ int get_nearest_int(double x) {
 
 double get_fractional(double x) {
     double a,b;
-    b=((int)x*10)%10;
+    if (x<0){
+        b=x-(int)x+1;
+    }
+    else{
+        b=x-(int)x;
+    }
     return b; // Not implementation
 }
