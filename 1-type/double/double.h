@@ -1,7 +1,6 @@
+#include <math.h>
 bool compare_double(double x, double y) {
-    double a,b;
-    scanf_s("%d, %d", &a, &b);
-    if (a>b){
+    if (x>y){
         return true;
     }
     else{
@@ -11,16 +10,12 @@ bool compare_double(double x, double y) {
 }
 
 int get_nearest_int(double x) {
-    double a;
-    int b;
-    scanf_s("%d", &a);
-    b=round(a);
+    int b=round(x);
     return b; // Not implementation
 }
 
 double get_fractional(double x) {
     double a,b;
-    scanf_s("%d", &a);
-    b=(a*10)%10;
+    b=((int)x*10)%10;
     return b; // Not implementation
 }
