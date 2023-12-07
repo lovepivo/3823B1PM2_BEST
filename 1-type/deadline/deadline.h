@@ -4,9 +4,9 @@ int get_score(short score, int start, int stop, int now) {
     if (start>=now){
         return score;
     }
-    if (stop<=now){
-        a=(int)round(score/2);
+    if (stop<now){
+        a=(int)ceil((double)score/2);
         return a;
     }
-    return ceil(score-((double)score)/2/(stop-start)*(now-start)); // Not implementation
+    return (int)ceil(score-((double)score/2/(stop-start))*(now-start)); // Not implementation
 }

@@ -3,23 +3,23 @@ int get_years(int seconds) {
 }
 
 int get_month(int seconds) {
-    return 0; // Not implementation
+    return seconds/(3600*24*31); // Not implementation
 }
 
 int get_day(int seconds) {
-    return 0; // Not implementation
+    return (seconds/(3600*24)%31)+1; // Not implementation
 }
 
 int get_hours(int seconds) {
-    return 0; // Not implementation
+    return seconds/3600%24; // Not implementation
 }
 
 int get_minutes(int seconds) {
-    return 0; // Not implementation
+    return seconds/60%60; // Not implementation
 }
 
 int get_seconds(int seconds) {
-    return 0; // Not implementation
+    return seconds%60; // Not implementation
 }
 
 
