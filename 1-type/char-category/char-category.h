@@ -2,7 +2,6 @@
 
 
 bool is_digit(char x) {
-    if (x=="") return false;
     if (x<58 && x>47){
         return true;
     }

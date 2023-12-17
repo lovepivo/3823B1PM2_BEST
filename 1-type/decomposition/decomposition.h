@@ -6,7 +6,7 @@ int reverse(int number) {
 
 double decomposition(int number) {
     int a;
-    a=4/(1/(number%10)+1/((number/10%10)*10)+1/((number/100%10)*100)+1/((number/1000)*1000))
+    a=4/(1/(number%10)+1/((number/10%10)*10)+1/((number/100%10)*100)+1/((number/1000)*1000));
     return a; // Not implementation
 }
 
