@@ -1,18 +1,25 @@
 #include <math.h>
 
-char find_bin_pattern(int number){
-    int a[10000], i;
-    while (number>=2){
-        a[i]=number%2;
-        number/=2;
-        i+=1;
-    }
-    a[i]=number;
-    i=0;
-    for(int j; j<number-2; j++){
-        if (a[j]==1 && a[j+1]==0 && a[j+2]==1){
-            i+=1;
+char find_bin_pattern(int x){
+    int a=0,b=0;
+    while (x!=0){
+        if (x%2==1){
+            if (a==0){
+                a=1;
+            }
+            else if (a==2){
+                b+=1;
+                a=1;
+            }
+            else a=1;
         }
+        if (x%2==0){
+            if (a==1){
+                a=2;
+            }
+            else a=0;
+        }
+        x/=2;
     }
-    return i;
+    return b;
 }

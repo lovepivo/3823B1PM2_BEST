@@ -1,39 +1,45 @@
 #include <math.h>
-#include <stdio.h>
-
-
-int m(int matrix[], int size, int co){
+ 
+int f(int matrix[], int size, int coif){
+    int opred = 0;
+    int coif1 = 1;
+    int count = 0;
+    int cons = sqrt(size);
+    if ((sqrt(size) - (double)cons) > 0.000000000001)
+        return -404;
+    if (cons == 2){
+        opred = matrix[0] * matrix[3] - matrix[1] * matrix[2];
+        return opred * coif;
+        }
     
-
-int determinant(int matrix[], int size){
-    int o, cnt = 0, co1=1, co=1;
-    int siz = sqrt(size);
-    if (sqrt(size) != (int)(sqrt(size)))
-        return - 404;
-    if (siz == 2){
-        return (matrix[0]*matrix[3]-matrix[1]*matrix[2]) * co
-    }
-    if (siz > 2){
-
-        for(int k = 0; k < siz; k++){
-            int rzm = (siz-1) * (siz-1);
-            int n[rzm], t=0;
-            for(int i = 0; i < siz; i++){
-                for(int j = 0; j < siz; j++){
-                    if((j != k) && (i * siz + j >= siz)){
-                        n[t] = matrix[i * siz + j];
-                        t++;
-                    }
-                }
+    if (cons > 2){
+        for (int k = 0; k < cons; k++){
+            int raz = (cons - 1) * (cons - 1); 
+            int now[raz];
+            int w = 0;
+            for (int i = 0; i < cons; i ++){
+                for (int j = 0; j < cons; j ++){
+                    if ((j != k) && ((i * cons + j) >= cons)){
+                        now[w] = matrix[i * cons + j];
+                        w ++;
+                        }
+                }      
             }
-            if(k%2==0)
-                co1=matrix[k];
-            else
-                co1=(-1)*matrix[k];
-            co1*=co;
-            cnt+=m(n, rzm , co1);
+            if (k % 2 == 0)
+                coif1 = matrix[k];
+            else 
+                coif1 = (-1) * matrix[k];
+            coif1 *= coif;
+            count += f(now, raz, coif1);
         }
     }
-    return cnt;
+ 
+    return count;
 }
+ 
+int determinant(int matrix[], int size){
+    int a = 0;
+    int coif = 1;
+    a = f(matrix, size, coif);
+    return a;
 }
