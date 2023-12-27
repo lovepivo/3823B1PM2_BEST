@@ -1,21 +1,34 @@
 #include <math.h>
 #include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
 
 int is_palindrom(char text[]){
-    int a=1;
-    if (strlen(text)==0) return 1;
-    if ((strlen(text)%2)==0){
-        for (int i=0; i<strlen(text)/2;i++){
-            if (text[i]!=text[strlen(text)-i-1]){
-                
-                return 0;
-            }
+    if (strlen(text) == 0)
+        return 1;
+
+    int count = 0;
+    for (int i = 0; i < strlen(text); i++){
+        if (isalpha(text[i]))
+            count ++;
+    }
+    char* text1 = (char*)malloc(count * sizeof(char));
+    int j = 0;
+    for (int i = 0; i < strlen(text); i++){
+        if (isalpha(text[i])){
+            text1[j] = tolower(text[i]);
+            j ++;
         }
     }
-    for (int i=0; i<(strlen(text)/2)-1;i++){
-        if (text[i]!=text[strlen(text)-i-1]){
-            return 0;
+    int f = 0;
+    for (int i = 0; i < (count / 2) - 1; i++){
+        if (text1[i] == text1[count - 1 - i])
+            f = 1;
+        else{
+            f = 0;
+            break;
         }
     }
-    return 1;
+    return f;
 }
